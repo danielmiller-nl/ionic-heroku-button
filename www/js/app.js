@@ -47,6 +47,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+    
+    .state('tab.dash-golfbreak', {
+      url: '/dash/golfbreak',
+      views: {
+        'tab-dash': {
+          templateUrl: 'templates/golfbreak.html',
+          controller: 'DashCtrl'
+        }
+      }
+    })
+    
+    .state('tab.dash-eatbreak', {
+      url: '/dash/eatbreak',
+      views: {
+        'tab-dash': {
+          templateUrl: 'templates/eatbreak.html',
+          controller: 'DashCtrl'
+        }
+      }
+    })
 
     .state('tab.friends', {
       url: '/friends',
@@ -80,5 +100,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
-});
+})
+
+.filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
+}]);
 
